@@ -1,43 +1,43 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
 export const InputForm = styled.div`
-  margin-left: 20px;
+  /* margin-left: 20px;
   padding: 20px;
   border: 2px solid green;
-  margin-top: 30px;
+  margin-top: 30px; */
 `;
 
 export const StyledForm = styled(Form)`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100%; */
 `;
 
 export const ButtonAdd = styled.button`
-  margin-top: 8px;
+  /* margin-top: 8px;
   width: 100px;
   margin-left: auto;
   margin-right: auto;
   height: 30px;
-  background-color: yellowgreen;
+  background-color: yellowgreen; */
 `;
 
 export const FindForm = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: column-reverse;
   text-align: center;
   width: 300px;
   margin: 0 auto;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 500; */
 `;
 
 export const TitleText = styled.h2`
   margin-left: 20px;
 `;
 export const Wrapper = styled.div`
-  display: block;
-  width: 400px;
+  /* display: block;
+  width: 400px; */
 `;
 
 export const Title = styled.h1`

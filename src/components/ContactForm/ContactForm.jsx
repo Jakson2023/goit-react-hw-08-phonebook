@@ -1,9 +1,13 @@
-import { InputForm, ButtonAdd, StyledForm } from 'components/Phonebook.styled';
-import { Formik, Field, ErrorMessage } from 'formik';
+import { InputForm, StyledForm } from 'components/Phonebook.styled';
+import { Formik, Field  } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
+import * as React from 'react';
+
 
 import { addContact } from 'redux/tasks/operations';
 import * as Yup from 'yup';
+import { Button, TextField} from '@mui/material';
+
 const PhonebookSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
@@ -41,27 +45,50 @@ export const ContactForm = () => {
     }
   };
 
+  
+
   return (
     <InputForm>
       <Formik
         initialValues={{ name: '', number: '' }}
         validationSchema={PhonebookSchema}
-        onSubmit={(values, { resetForm }) => {
+        onSubmit={(values, formikHelpers) => {
           addNewContact(values);
-          resetForm();
+          formikHelpers.resetForm();
         }}
       >
-        {({ dirty, isValid }) => (
+        {({errors, dirty, touched, isValid }) => (
           <StyledForm>
-            <label htmlFor="name">Name </label>
-            <Field name="name" type="text" />
-            <ErrorMessage name="name" />
-            <label htmlFor="number">Number</label>
-            <Field name="number" type="tel" />
-            <ErrorMessage name="number" />
-            <ButtonAdd type="submit" disabled={!dirty || !isValid}>
+            
+            <Field
+             name="name"
+             type="text"
+             as={TextField}
+             variant='outlined'
+             color='primary'
+             label='Name' 
+             error={Boolean(errors.name) && Boolean(touched.name)}
+            
+             
+             />
+           
+            
+            <Field name="number" type="tel"
+            as={TextField}
+            variant='outlined'
+            color='primary'
+            label='Number'
+            error={Boolean(errors.number) && Boolean(touched.number)} />
+          
+            <Button
+             type="submit"
+             variant='contained'
+             color='primary'
+             size='large'
+              disabled={!dirty || !isValid}
+              >
               Add contact
-            </ButtonAdd>
+            </Button>
           </StyledForm>
         )}
       </Formik>
