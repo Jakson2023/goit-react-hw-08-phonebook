@@ -1,4 +1,5 @@
-import { ContactWrapper, ButtonDel } from 'components/Phonebook.styled';
+import { Delete } from '@mui/icons-material';
+import { Box, Button, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/tasks/operations';
 
@@ -6,11 +7,20 @@ export const ListElement = ({ element }) => {
   const dispatch = useDispatch();
   
   return (
-    <ContactWrapper>
-      <li>
+    <Box component={'span'}
+    sx={{
+      display:'flex',
+      width: '100%',
+      justifyContent:'space-between',
+      mb:1
+    }}>
+      <Typography>
         {element.name}: {element.number}
-      </li>
-      <ButtonDel onClick={() => dispatch(deleteContact(element.id))}>delete</ButtonDel>
-    </ContactWrapper>
+      </Typography>
+      <Button onClick={() => dispatch(deleteContact(element.id))} color="error" size="small" variant="contained" startIcon={<Delete />}>
+  delete
+</Button>
+      
+    </Box>
   );
 };

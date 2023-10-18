@@ -1,6 +1,6 @@
-
 import { useSelector } from 'react-redux';
 import { ListElement } from 'components/ListElement/ListElement';
+import { Box } from '@mui/material';
 export const ContactList = () => {
   const contacts = useSelector(state => state.contacts.items);
   const filters = useSelector(state => state.filter.filter);
@@ -14,11 +14,15 @@ export const ContactList = () => {
   };
 
   return (
-    <ul>
+    <Box component={'ul'} sx={{listStyle:'none',
+    maxWidth: 500,
+    ml:'auto',
+    mr:'auto',
+    padding:0}}>
       {filteredContacts().map(contact => (
         
         <ListElement key={contact.id} element={contact} />
       ))}
-    </ul>
+    </Box>
   );
 };

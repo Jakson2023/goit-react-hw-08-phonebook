@@ -1,12 +1,12 @@
-import { InputForm, StyledForm } from 'components/Phonebook.styled';
-import { Formik, Field} from 'formik';
+
+import { Formik,Form, Field} from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import * as React from 'react';
 
 
 import { addContact } from 'redux/tasks/operations';
 import * as Yup from 'yup';
-import { Button, TextField} from '@mui/material';
+import { Box, Button, TextField} from '@mui/material';
 
 const PhonebookSchema = Yup.object().shape({
   name: Yup.string()
@@ -32,7 +32,7 @@ export const ContactForm = () => {
   const contacts = useSelector(state => state.contacts.items);
 
   const addNewContact = newContact => {
-    const contactInList = contacts.find(
+   const contactInList = contacts.find(
       contact =>
         contact.name &&
         newContact.name &&
@@ -48,7 +48,7 @@ export const ContactForm = () => {
   
 
   return (
-    <InputForm>
+    <div>
       <Formik
         initialValues={{ name: '', number: '' }}
         validationSchema={PhonebookSchema}
@@ -58,8 +58,16 @@ export const ContactForm = () => {
         }}
       >
         {({errors, dirty, touched, isValid }) => (
-          <StyledForm>
+          <Form>
             
+            <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              ml: 'auto',
+              mr: 'auto',
+              maxWidth: 500,
+            }}>
             <Field
              name="name"
              type="text"
@@ -71,7 +79,7 @@ export const ContactForm = () => {
              helperText={errors.name}
              
              />
-          
+          <Box height={14} />
             
             <Field name="number" type="tel"
             as={TextField}
@@ -80,7 +88,7 @@ export const ContactForm = () => {
             label='Number'
             error={Boolean(errors.number) && Boolean(touched.number)}
             helperText={errors.number} />
-          
+          <Box height={14} />
             <Button
              type="submit"
              variant='contained'
@@ -90,9 +98,11 @@ export const ContactForm = () => {
               >
               Add contact
             </Button>
-          </StyledForm>
+            </Box>
+          </Form>
         )}
       </Formik>
-    </InputForm>
+    </div>
+    
   );
 };

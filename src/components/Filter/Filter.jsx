@@ -1,7 +1,7 @@
-import { FindForm } from 'components/Phonebook.styled';
-
 import { inputFilteredContacts } from 'redux/tasks/filterSlice';
 import { useDispatch } from 'react-redux';
+import { Box, InputAdornment, TextField } from '@mui/material';
+import { PersonSearch } from '@mui/icons-material';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -9,14 +9,29 @@ export const Filter = () => {
     dispatch(inputFilteredContacts(e.target.value));
   };
   return (
-    <FindForm>
-      <input
+    <Box
+      sx={{
+        mt: 4,
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
+      <TextField
+        label="Find contacts by name"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <PersonSearch />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+        color="secondary"
         type="text"
         onChange={e => {
           inputSearchFilter(e);
         }}
       />
-      Find contacts by name
-    </FindForm>
+    </Box>
   );
 };
