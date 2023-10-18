@@ -1,5 +1,5 @@
 import { InputForm, StyledForm } from 'components/Phonebook.styled';
-import { Formik, Field  } from 'formik';
+import { Formik, Field} from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import * as React from 'react';
 
@@ -68,17 +68,18 @@ export const ContactForm = () => {
              color='primary'
              label='Name' 
              error={Boolean(errors.name) && Boolean(touched.name)}
-            
+             helperText={errors.name}
              
              />
-           
+          
             
             <Field name="number" type="tel"
             as={TextField}
             variant='outlined'
             color='primary'
             label='Number'
-            error={Boolean(errors.number) && Boolean(touched.number)} />
+            error={Boolean(errors.number) && Boolean(touched.number)}
+            helperText={errors.number} />
           
             <Button
              type="submit"
