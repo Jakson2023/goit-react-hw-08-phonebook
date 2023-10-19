@@ -6,9 +6,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Typography } from '@mui/material';
 import { Toaster } from 'react-hot-toast';
+import * as React from 'react';
 
 export const ContactApp = () => {
-  const isLoading = useSelector(state => state.contacts.isLoading);
   const error = useSelector(state => state.contacts.error);
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ export const ContactApp = () => {
   return (
     <>
       <div>
-        <Toaster/>
+        <Toaster />
         <ContactForm />
         <Filter />
         <Typography
@@ -29,7 +29,7 @@ export const ContactApp = () => {
             ml: 'auto',
             mr: 'auto',
             mt: 6,
-            maxWidth: 150,
+            width: '100%',
             textAlign: 'center',
           }}
         >
@@ -42,17 +42,11 @@ export const ContactApp = () => {
             display: 'block',
             ml: 'auto',
             mr: 'auto',
-            width: 150,
+            width: '100%',
             textAlign: 'center',
             mb: 4,
           }}
-        >
-          {isLoading && (
-            <Typography color="success.light" fontSize={20}>
-              Loading...
-            </Typography>
-          )}
-        </Box>
+        ></Box>
         <ContactList />
       </div>
     </>

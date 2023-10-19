@@ -20,7 +20,7 @@ const PhonebookSchema = Yup.object().shape({
     .required('Required.')
     .matches(
       /^(?:\+?\d{1,4}\(\d{2,3}\)\d{3}-\d{2}-\d{2}|\+?\d{1,4}\d{3}-\d{2}-\d{2}|\+?\d{1,4}\(\d{2,3}\)\d{3}\d{2}\d{2}|\d{3}-\d{2}-\d{2})$/,
-      'Invalid phone number format'
+      'Invalid phone number.Try this format: +11(222)333-44-55'
     ),
 });
 
@@ -44,7 +44,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <div>
+    <Box sx={{mt:20}}>
       <Formik
         initialValues={{ name: '', number: '' }}
         validationSchema={PhonebookSchema}
@@ -99,6 +99,6 @@ export const ContactForm = () => {
           </Form>
         )}
       </Formik>
-    </div>
+    </Box>
   );
 };

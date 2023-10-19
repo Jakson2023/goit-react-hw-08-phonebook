@@ -27,6 +27,7 @@ export const LoginForm = () => {
           mr: 'auto',
           width: 350,
           mb: 16,
+          mt: 40,
         }}
       >
         <TextField
@@ -36,7 +37,7 @@ export const LoginForm = () => {
           color="primary"
           label="Email"
         />
-        <Box height={14} />
+        <Box height={18} />
         <TextField
           variant="outlined"
           color="primary"
@@ -44,7 +45,7 @@ export const LoginForm = () => {
           type="password"
           name="password"
         />
-        <Box height={14} />
+        <Box height={18} />
         <Button type="submit" variant="contained" color="primary" size="large">
           Log In
         </Button>

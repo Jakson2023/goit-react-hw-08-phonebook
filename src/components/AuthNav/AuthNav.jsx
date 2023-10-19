@@ -1,4 +1,4 @@
-import { StyledLink } from 'components/rootStyle/rootStyle';
+import { StyledLink } from 'components/RootStyle/rootStyle';
 import { Box } from '@mui/material';
 
 export const AuthNav = () => {
