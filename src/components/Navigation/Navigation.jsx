@@ -1,6 +1,6 @@
 import { useAuth } from 'hooks';
 import { Box } from '@mui/material';
-import { StyledLink } from 'components/RootStyle/rootStyle';
+import { StyledLink } from 'components/rootStyle';
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
