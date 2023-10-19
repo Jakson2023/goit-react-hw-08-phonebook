@@ -1,16 +1,11 @@
-import { NavLink } from 'react-router-dom';
-import css from './AuthNav.module.css';
+import { StyledLink } from 'components/rootStyle/rootStyle';
 import { Box } from '@mui/material';
 
 export const AuthNav = () => {
   return (
-    <Box sx={{ml:'auto'}}>
-      <NavLink className={css.link} to="/register">
-        Register
-      </NavLink>
-      <NavLink className={css.link} to="/login">
-        Log In
-      </NavLink>
+    <Box component={'span'} sx={{ ml: 'auto' }}>
+      <StyledLink to="/register">Register</StyledLink>
+      <StyledLink to="/login">Log In</StyledLink>
     </Box>
   );
 };

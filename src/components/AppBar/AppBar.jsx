@@ -9,7 +9,7 @@ export const AppBarComp = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <Box component={'header'}sx={{mb:6}}>
+    <Box component={'header'} sx={{ mb: 6 }}>
       <AppBar position="static">
         <Toolbar>
           <Icon sx={{ mr: 1 }}>

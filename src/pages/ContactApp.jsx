@@ -5,6 +5,7 @@ import { Filter } from 'components/Filter/Filter';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Typography } from '@mui/material';
+import { Toaster } from 'react-hot-toast';
 
 export const ContactApp = () => {
   const isLoading = useSelector(state => state.contacts.isLoading);
@@ -18,6 +19,7 @@ export const ContactApp = () => {
   return (
     <>
       <div>
+        <Toaster/>
         <ContactForm />
         <Filter />
         <Typography

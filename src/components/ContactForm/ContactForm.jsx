@@ -1,13 +1,10 @@
-
-import { Formik,Form, Field} from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import * as React from 'react';
-
-
 import { addContact } from 'redux/tasks/operations';
 import * as Yup from 'yup';
-import { Box, Button, TextField} from '@mui/material';
-
+import { Box, Button, TextField } from '@mui/material';
+import toast from 'react-hot-toast';
 const PhonebookSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
@@ -32,20 +29,19 @@ export const ContactForm = () => {
   const contacts = useSelector(state => state.contacts.items);
 
   const addNewContact = newContact => {
-   const contactInList = contacts.find(
+    const contactInList = contacts.find(
       contact =>
         contact.name &&
         newContact.name &&
         contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
     if (contactInList) {
-      alert(`${contactInList.name} is already in contacts`);
+      toast.error(`${contactInList.name} is already in contacts`)
+     
     } else {
-      dispatch(addContact({...newContact }));
+      dispatch(addContact({ ...newContact }));
     }
   };
-
-  
 
   return (
     <div>
@@ -57,52 +53,52 @@ export const ContactForm = () => {
           formikHelpers.resetForm();
         }}
       >
-        {({errors, dirty, touched, isValid }) => (
+        {({ errors, dirty, touched, isValid }) => (
           <Form>
-            
             <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              ml: 'auto',
-              mr: 'auto',
-              maxWidth: 500,
-            }}>
-            <Field
-             name="name"
-             type="text"
-             as={TextField}
-             variant='outlined'
-             color='primary'
-             label='Name' 
-             error={Boolean(errors.name) && Boolean(touched.name)}
-             helperText={errors.name}
-             
-             />
-          <Box height={14} />
-            
-            <Field name="number" type="tel"
-            as={TextField}
-            variant='outlined'
-            color='primary'
-            label='Number'
-            error={Boolean(errors.number) && Boolean(touched.number)}
-            helperText={errors.number} />
-          <Box height={14} />
-            <Button
-             type="submit"
-             variant='contained'
-             color='primary'
-             size='large'
-              disabled={!dirty || !isValid}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                ml: 'auto',
+                mr: 'auto',
+                maxWidth: 500,
+              }}
+            >
+              <Field
+                name="name"
+                type="text"
+                as={TextField}
+                variant="outlined"
+                color="primary"
+                label="Name"
+                error={Boolean(errors.name) && Boolean(touched.name)}
+                helperText={errors.name}
+              />
+              <Box height={14} />
+              <Field
+                name="number"
+                type="tel"
+                as={TextField}
+                variant="outlined"
+                color="primary"
+                label="Number"
+                error={Boolean(errors.number) && Boolean(touched.number)}
+                helperText={errors.number}
+              />
+              <Box height={14} />
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="large"
+                disabled={!dirty || !isValid}
               >
-              Add contact
-            </Button>
+                Add contact
+              </Button>
             </Box>
           </Form>
         )}
       </Formik>
     </div>
-    
   );
 };
